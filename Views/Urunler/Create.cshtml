@@ -1,0 +1,51 @@
+﻿@model StokTakip.Models.Urunler
+
+@{
+    ViewBag.Title = "YENİ ÜRÜN EKLE";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <h4 class="mb-3">Yeni Ürün Ekle</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.UrunAdi, new { @class = "form-label" })
+            @Html.EditorFor(model => model.UrunAdi, new { htmlAttributes = new { @class = "form-control", placeholder = "Ürün adını girin" } })
+            @Html.ValidationMessageFor(model => model.UrunAdi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.UrunKodu, new { @class = "form-label" })
+            @Html.EditorFor(model => model.UrunKodu, new { htmlAttributes = new { @class = "form-control", placeholder = "Ürün kodunu girin" } })
+            @Html.ValidationMessageFor(model => model.UrunKodu, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Fiyat, new { @class = "form-label" })
+            @Html.EditorFor(model => model.Fiyat, new { htmlAttributes = new { @class = "form-control", placeholder = "Fiyat girin" } })
+            @Html.ValidationMessageFor(model => model.Fiyat, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Stok, new { @class = "form-label" })
+            @Html.EditorFor(model => model.Stok, new { htmlAttributes = new { @class = "form-control", placeholder = "Stok miktarını girin" } })
+            @Html.ValidationMessageFor(model => model.Stok, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <input type="submit" value="Ürün Ekle" class="btn btn-success" />
+            <a href="@Url.Action("Index")" class="btn btn-secondary">İptal</a>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

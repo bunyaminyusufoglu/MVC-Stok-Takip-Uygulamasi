@@ -1,0 +1,52 @@
+﻿@model StokTakip.Models.Urunler
+
+@{
+    ViewBag.Title = "ÜRÜN DÜZENLEME";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container mt-4">
+        <h4 class="mb-3">Ürün Düzenleme</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.UrunAdi, new { @class = "form-label fw-bold" })
+            @Html.EditorFor(model => model.UrunAdi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UrunAdi, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.UrunKodu, new { @class = "form-label fw-bold" })
+            @Html.EditorFor(model => model.UrunKodu, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UrunKodu, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Fiyat, new { @class = "form-label fw-bold" })
+            @Html.EditorFor(model => model.Fiyat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Fiyat, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.Stok, new { @class = "form-label fw-bold" })
+            @Html.EditorFor(model => model.Stok, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Stok, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Listeye Dön</a>
+        </div>
+    </div>
+}
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

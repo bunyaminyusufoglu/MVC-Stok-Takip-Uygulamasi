@@ -1,0 +1,43 @@
+﻿@model StokTakip.Models.Satislar
+
+@{
+    ViewBag.Title = "SATIŞ DETAYLARI";
+}
+
+<div class="container mt-4">
+    <h4 class="mb-3">Satış Detayları</h4>
+    <hr />
+
+    <div class="card">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Musteri.Adi)</dt>
+                <dd class="col-sm-8">@ViewBag.MusteriAdi</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Urun.UrunAdi)</dt>
+                <dd class="col-sm-8">@ViewBag.UrunAdi</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Adet)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Adet)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(model => model.Tarih)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Tarih)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex justify-content-between">
+        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Düzenle</a>
+
+        <button class="btn btn-danger" onclick="indirPDF()">PDF Olarak İndir</button>
+
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Listeye Dön</a>
+    </div>
+</div>
+
+<script>
+    function indirPDF() {
+        var element = document.querySelector('.card'); // PDF'ye dönüştürülecek alan
+        html2pdf(element);
+    }
+</script>
